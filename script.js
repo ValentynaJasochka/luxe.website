@@ -1,7 +1,9 @@
 const title = document.querySelector('.js-title');
 const userName=document.querySelector('.js-username');
 const comment =document.querySelector('.js-comment')
-console.log(!!userName.value);
+const list = document.querySelector('.js-list')
+const goods = [...list.children]
+console.log(goods);
 
 title.textContent = `Hello ${userName.value}`;
 console.log(title.textContent)
@@ -19,4 +21,6 @@ else{
   comment.hidden = false;
   console.log(comment);
 }
-
+ goods.forEach(good => {
+  good.textContent = `tomato`
+ });
