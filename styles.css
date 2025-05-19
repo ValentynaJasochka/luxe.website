@@ -8,3 +8,10 @@ ul,li {
 .item {
   color: blue;
 }
+.cars-list {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+}

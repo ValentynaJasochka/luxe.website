@@ -1,7 +1,71 @@
+const cars = [
+  {
+    model: "BMW",
+    type: "5 series",
+    price: 24300,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 7800,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 16000,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "BMW",
+    type: "5 series",
+    price: 14500,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 22500,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Honda",
+    type: "C40",
+    price: 19500,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Mini",
+    type: "Cupper",
+    price: 12000,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "BMW",
+    type: "Sport",
+    price: 8000,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  },
+  {
+    model: "Volvo",
+    type: "Accord",
+    price: 20000,
+    img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+  }
+];
+
 const title = document.querySelector(".js-title");
 const userName = document.querySelector(".js-username");
 const comment = document.querySelector(".js-comment");
 const list = document.querySelector(".js-list");
+const carsList =document.querySelector('.js-cars-list')
 
 title.textContent = `Hello ${userName.value}`;
 
@@ -23,5 +87,18 @@ const goods = [...list.children];
 
 goods.forEach((good) => {
   good.textContent = `tomato`;
-  good.classList.add('item')
+  good.classList.add("item");
 });
+const listHeader = `<h2>${"Список покупок"}</h2>`;
+list.insertAdjacentHTML("beforebegin", listHeader);
+const marKup = cars.map(({model, type, price, img})=>`
+  <li>
+  <img src="${img}" alt="${model}" width ='300'>
+  <h2>Make: ${model}</h2>
+  <h3>Model: ${type}</h3>
+  <p>Price: ${price}</p>
+</li>`).join('')
+
+
+carsList.insertAdjacentHTML("beforeend", marKup)
+carsList.classList.add('cars-list')
