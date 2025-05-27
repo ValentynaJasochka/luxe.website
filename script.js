@@ -58,16 +58,28 @@ const cars = [
     type: "Accord",
     price: 20000,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
-  }
+  },
 ];
 const selectors = {
   title: document.querySelector(".js-title"),
   comment: document.querySelector(".js-comment"),
   list: document.querySelector(".js-list"),
-  carsList: document.querySelector('.js-cars-list'),
-  userName: document.querySelector(".js-username")
-}
-const {title, comment, list, carsList, userName} = selectors
+  carsList: document.querySelector(".js-cars-list"),
+  userName: document.querySelector(".js-username"),
+  addBtn: document.querySelector(".js-add-btn"),
+  subtractBtn: document.querySelector(".js-subtract-btn"),
+  counter: document.querySelector(".js-counter"),
+};
+const {
+  title,
+  comment,
+  list,
+  carsList,
+  userName,
+  addBtn,
+  subtractBtn,
+  counter,
+} = selectors;
 
 title.textContent = `Hello ${userName.value}`;
 
@@ -93,14 +105,29 @@ goods.forEach((good) => {
 });
 const listHeader = `<h2>${"Список покупок"}</h2>`;
 list.insertAdjacentHTML("beforebegin", listHeader);
-const marKup = cars.map(({model, type, price, img})=>`
+const marKup = cars
+  .map(
+    ({ model, type, price, img }) => `
   <li>
   <img src="${img}" alt="${model}" width ='300'>
   <h2>Make: ${model}</h2>
   <h3>Model: ${type}</h3>
   <p>Price: ${price}</p>
-</li>`).join('')
+</li>`
+  )
+  .join("");
 
+carsList.insertAdjacentHTML("beforeend", marKup);
+carsList.classList.add("cars-list");
 
-carsList.insertAdjacentHTML("beforeend", marKup)
-carsList.classList.add('cars-list')
+addBtn.addEventListener("click", handlerAdd);
+subtractBtn.addEventListener("click", handlerSubtract);
+let step = 0;
+function handlerAdd() {
+  step += 1;
+  counter.textContent = step;
+}
+function handlerSubtract() {
+  step -= 1;
+  counter.textContent = step;
+}

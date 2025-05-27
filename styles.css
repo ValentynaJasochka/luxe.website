@@ -8,6 +8,11 @@ ul,li {
 .item {
   color: blue;
 }
+.math-container {
+  display: flex;
+  flex-direction: row;
+ column-gap: 30px;
+}
 .cars-list {
   display:flex;
   flex-direction: row;
