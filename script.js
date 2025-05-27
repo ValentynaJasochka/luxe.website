@@ -60,12 +60,14 @@ const cars = [
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   }
 ];
-
-const title = document.querySelector(".js-title");
-const userName = document.querySelector(".js-username");
-const comment = document.querySelector(".js-comment");
-const list = document.querySelector(".js-list");
-const carsList =document.querySelector('.js-cars-list')
+const selectors = {
+  title: document.querySelector(".js-title"),
+  comment: document.querySelector(".js-comment"),
+  list: document.querySelector(".js-list"),
+  carsList: document.querySelector('.js-cars-list'),
+  userName: document.querySelector(".js-username")
+}
+const {title, comment, list, carsList, userName} = selectors
 
 title.textContent = `Hello ${userName.value}`;
 
