@@ -65,7 +65,7 @@ const selectors = {
   comment: document.querySelector(".js-comment"),
   list: document.querySelector(".js-list"),
   carsList: document.querySelector(".js-cars-list"),
-  userName: document.querySelector(".js-username"),
+  // userName: document.querySelector(".js-username"),
   addBtn: document.querySelector(".js-add-btn"),
   subtractBtn: document.querySelector(".js-subtract-btn"),
   counter: document.querySelector(".js-counter"),
@@ -76,7 +76,7 @@ const {
   comment,
   list,
   carsList,
-  userName,
+  // userName,
   addBtn,
   subtractBtn,
   counter,
@@ -85,21 +85,28 @@ const {
 
 //Handle input - Name, email, phone. Greeting
 form.addEventListener('submit', handlerSubmit);
+
 function handlerSubmit(evt){
 evt.preventDefault()
+const {username, email, phone}=evt.currentTarget.elements;
+createGreeting (username, email, phone)
 }
 
-title.textContent = `Hello ${userName.value}`;
 
-if (!!userName.value) {
-  title.textContent = title.textContent.toUpperCase();
-  title.classList.add("title-color");
-  comment.hidden = true;
-} else {
-  title.textContent = `Write your Name`;
-  title.classList.remove("title-color");
-  comment.hidden = false;
+function createGreeting(name, mail, tel) {
+  title.textContent = `Hello ${name.value}. Please check your email - ${mail.value} and phone - ${tel.value}`;
+  if (!!name.value) {
+    // title.textContent = title.textContent.toUpperCase();
+    title.classList.add("title-color");
+    comment.hidden = true;
+  } else {
+    title.textContent = `Write your Name`;
+    title.classList.remove("title-color");
+    comment.hidden = false;
+  }
 }
+
+
 
 const li = document.createElement("li");
 
@@ -127,6 +134,8 @@ const marKup = cars
 
 carsList.insertAdjacentHTML("beforeend", marKup);
 carsList.classList.add("cars-list");
+
+
 // Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);
 subtractBtn.addEventListener("click", handlerSubtract);
