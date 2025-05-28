@@ -69,6 +69,7 @@ const selectors = {
   addBtn: document.querySelector(".js-add-btn"),
   subtractBtn: document.querySelector(".js-subtract-btn"),
   counter: document.querySelector(".js-counter"),
+  form: document.querySelector('.js-form'),
 };
 const {
   title,
@@ -79,7 +80,14 @@ const {
   addBtn,
   subtractBtn,
   counter,
+  form
 } = selectors;
+
+//Handle input - Name, email, phone. Greeting
+form.addEventListener('submit', handlerSubmit);
+function handlerSubmit(evt){
+evt.preventDefault()
+}
 
 title.textContent = `Hello ${userName.value}`;
 
@@ -119,7 +127,7 @@ const marKup = cars
 
 carsList.insertAdjacentHTML("beforeend", marKup);
 carsList.classList.add("cars-list");
-
+// Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);
 subtractBtn.addEventListener("click", handlerSubtract);
 let step = 0;
