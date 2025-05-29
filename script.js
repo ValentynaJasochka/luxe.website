@@ -69,7 +69,7 @@ const selectors = {
   addBtn: document.querySelector(".js-add-btn"),
   subtractBtn: document.querySelector(".js-subtract-btn"),
   counter: document.querySelector(".js-counter"),
-  form: document.querySelector('.js-form'),
+  form: document.querySelector(".js-form"),
 };
 const {
   title,
@@ -80,21 +80,49 @@ const {
   addBtn,
   subtractBtn,
   counter,
-  form
+  form,
 } = selectors;
 
 //Handle input - Name, email, phone. Greeting
-form.addEventListener('submit', handlerSubmit);
+form.addEventListener("submit", handlerSubmit);
 
-function handlerSubmit(evt){
-evt.preventDefault()
-const {username, email, phone}=evt.currentTarget.elements;
-createGreeting (username, email, phone)
+function handlerSubmit(evt) {
+  evt.preventDefault();
+  // debugger
+  const a = Array.from(evt.currentTarget.elements);
+  // console.log(a);
+  // console.log('---------------');
+  // a.forEach(B => console.log(B.name))
+  const { username, email, phone, city, street, age, car } =
+    evt.currentTarget.elements;
+  console.dir(evt.currentTarget.elements);
+  // console.dir(Object.keys(evt.currentTarget.elements));
+  const data ={};
+  for (const key in evt.currentTarget.elements) {
+    if (evt.currentTarget.elements[key].name) {
+      data[evt.currentTarget.elements[key].name] = evt.currentTarget.elements[key].value
+    
+    }
+    if(evt.currentTarget.elements[key].name && !evt.currentTarget.elements[key].value){
+      console.log('a',evt.currentTarget.elements[key])
+      
+    }
+  }
+  console.log(data);
+  // const data = Object.keys(evt.currentTarget.elements).reduce((acc, item)=>{
+  //   if(isNaN(item)){
+  //     acc[item]=evt.currentTarget.elements[item].value
+  //   }
+  //   return acc
+  // },{})
+  // console.log(data);
+  createGreeting(username, email, phone,city, street, age, car);
 }
 
-
-function createGreeting(name, mail, tel) {
-  title.textContent = `Hello ${name.value}. Please check your email - ${mail.value} and phone - ${tel.value}`;
+function createGreeting(name, mail, tel, city, street, age, car) {
+  title.textContent = `Hello ${name.value}. Please check your email - ${mail.value} 
+  and phone - ${tel.value}.You are ${age.value} years old,  live on ${street.value} in ${city.value} 
+  and drives ${car.value}`;
   if (!!name.value) {
     // title.textContent = title.textContent.toUpperCase();
     title.classList.add("title-color");
@@ -105,8 +133,6 @@ function createGreeting(name, mail, tel) {
     comment.hidden = false;
   }
 }
-
-
 
 const li = document.createElement("li");
 
@@ -134,7 +160,6 @@ const marKup = cars
 
 carsList.insertAdjacentHTML("beforeend", marKup);
 carsList.classList.add("cars-list");
-
 
 // Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);
