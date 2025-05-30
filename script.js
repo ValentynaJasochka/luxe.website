@@ -128,6 +128,17 @@ function createGreeting(name, mail, tel, city, street, age, car) {
   }
 }
 
+// Copying forbidding
+document.addEventListener('keydown', handlerCopyKey)
+function handlerCopyKey(evt){
+  if(evt.ctrlKey && evt.code ==='KeyC')
+  {
+    evt.preventDefault();
+  }
+}
+
+
+//List creating
 const li = document.createElement("li");
 
 list.appendChild(li);
