@@ -148,9 +148,10 @@ const listHeader = `<h2>${"Список покупок"}</h2>`;
 list.insertAdjacentHTML("beforebegin", listHeader);
 
 //CArs form and listStyle
+carsList.insertAdjacentHTML("beforeend", createMarkup(cars));
 
 carsForm.addEventListener("submit", handlerCarsForm);
-let resultCars =[]
+
 function handlerCarsForm(evt) {
   evt.preventDefault();
 
@@ -160,17 +161,15 @@ function handlerCarsForm(evt) {
   } = evt.currentTarget.elements;
   const queryValue = query.toLowerCase();
 
-  resultCars = cars.filter((item) => {
+  const resultCars = cars.filter((item) => {
     return item[selector].toLowerCase() == queryValue;
   });
-  createMarkup(resultCars)
-  // console.log(resultCars);
+
+  carsList.innerHTML = createMarkup(resultCars);
 }
 
 function createMarkup(dataArr) {
-  let marKup
-  if (dataArr.length ===0) {
-    marKup = cars
+  return (marKup = dataArr
     .map(
       ({ model, type, price, img }) => `
     <li>
@@ -180,29 +179,10 @@ function createMarkup(dataArr) {
     <p>Price: ${price}</p>
   </li>`
     )
-    .join("");
-  } else {
-    marKup = cars
-    .map(
-      ({ model, type, price, img }) => `
-    <li>
-    <img src="${img}" alt="${model}" width ='300'>
-    <h2>Make: ${model}</h2>
-    <h3>Model: ${type}</h3>
-    <p>Price: ${price}</p>
-  </li>`
-    )
-    .join("");
-  }
-  carsList.insertAdjacentHTML("beforeend", marKup);
-carsList.classList.add("cars-list");
+    .join(""));
 }
 
-
-
-
-// carsList.insertAdjacentHTML("beforeend", marKup);
-// carsList.classList.add("cars-list");
+carsList.classList.add("cars-list");
 
 // Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);
