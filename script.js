@@ -65,7 +65,7 @@ const selectors = {
   comment: document.querySelector(".js-comment"),
   list: document.querySelector(".js-list"),
   carsList: document.querySelector(".js-cars-list"),
-  // userName: document.querySelector(".js-username"),
+  carsForm: document.querySelector(".js-cars-form"),
   addBtn: document.querySelector(".js-add-btn"),
   subtractBtn: document.querySelector(".js-subtract-btn"),
   counter: document.querySelector(".js-counter"),
@@ -76,7 +76,7 @@ const {
   comment,
   list,
   carsList,
-  // userName,
+  carsForm,
   addBtn,
   subtractBtn,
   counter,
@@ -89,11 +89,9 @@ form.addEventListener("submit", handlerSubmit);
 function handlerSubmit(evt) {
   evt.preventDefault();
 
-  
-
   const { username, email, phone, city, street, age, car } =
     evt.currentTarget.elements;
-    // const elements = Array.from(evt.currentTarget.elements);
+  // const elements = Array.from(evt.currentTarget.elements);
   // const data = elements.reduce((acc, item)=>{
   //   if(isNaN(item.name)){
   //     acc[item.name]=item.value
@@ -103,13 +101,13 @@ function handlerSubmit(evt) {
 
   // elements with FormData
   const formData = new FormData(evt.currentTarget);
-  
-  const data = {};
-  formData.forEach((value, key)=>{
-    data[key] = value;
-  })
 
-  createGreeting(username, email, phone,city, street, age, car);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  createGreeting(username, email, phone, city, street, age, car);
 }
 
 // Creating HEADER
@@ -118,7 +116,6 @@ function createGreeting(name, mail, tel, city, street, age, car) {
   and phone - ${tel.value}.You are ${age.value} years old,  live on ${street.value} in ${city.value} 
   and drives ${car.value}`;
   if (!!name.value) {
-   
     title.classList.add("title-color");
     comment.hidden = true;
   } else {
@@ -129,14 +126,12 @@ function createGreeting(name, mail, tel, city, street, age, car) {
 }
 
 // Copying forbidding
-document.addEventListener('keydown', handlerCopyKey)
-function handlerCopyKey(evt){
-  if(evt.ctrlKey && evt.code ==='KeyC')
-  {
+document.addEventListener("keydown", handlerCopyKey);
+function handlerCopyKey(evt) {
+  if (evt.ctrlKey && evt.code === "KeyC") {
     evt.preventDefault();
   }
 }
-
 
 //List creating
 const li = document.createElement("li");
@@ -151,20 +146,63 @@ goods.forEach((good) => {
 });
 const listHeader = `<h2>${"Список покупок"}</h2>`;
 list.insertAdjacentHTML("beforebegin", listHeader);
-const marKup = cars
-  .map(
-    ({ model, type, price, img }) => `
-  <li>
-  <img src="${img}" alt="${model}" width ='300'>
-  <h2>Make: ${model}</h2>
-  <h3>Model: ${type}</h3>
-  <p>Price: ${price}</p>
-</li>`
-  )
-  .join("");
 
-carsList.insertAdjacentHTML("beforeend", marKup);
+//CArs form and listStyle
+
+carsForm.addEventListener("submit", handlerCarsForm);
+let resultCars =[]
+function handlerCarsForm(evt) {
+  evt.preventDefault();
+
+  const {
+    select: { value: selector },
+    query: { value: query },
+  } = evt.currentTarget.elements;
+  const queryValue = query.toLowerCase();
+
+  resultCars = cars.filter((item) => {
+    return item[selector].toLowerCase() == queryValue;
+  });
+  createMarkup(resultCars)
+  // console.log(resultCars);
+}
+
+function createMarkup(dataArr) {
+  let marKup
+  if (dataArr.length ===0) {
+    marKup = cars
+    .map(
+      ({ model, type, price, img }) => `
+    <li>
+    <img src="${img}" alt="${model}" width ='300'>
+    <h2>Make: ${model}</h2>
+    <h3>Model: ${type}</h3>
+    <p>Price: ${price}</p>
+  </li>`
+    )
+    .join("");
+  } else {
+    marKup = cars
+    .map(
+      ({ model, type, price, img }) => `
+    <li>
+    <img src="${img}" alt="${model}" width ='300'>
+    <h2>Make: ${model}</h2>
+    <h3>Model: ${type}</h3>
+    <p>Price: ${price}</p>
+  </li>`
+    )
+    .join("");
+  }
+  carsList.insertAdjacentHTML("beforeend", marKup);
 carsList.classList.add("cars-list");
+}
+
+
+
+
+// carsList.insertAdjacentHTML("beforeend", marKup);
+// carsList.classList.add("cars-list");
 
 // Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);
