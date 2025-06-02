@@ -61,6 +61,7 @@ const cars = [
   },
 ];
 const selectors = {
+  lodashSearch:document.querySelector(".js-lodash"),
   title: document.querySelector(".js-title"),
   comment: document.querySelector(".js-comment"),
   list: document.querySelector(".js-list"),
@@ -72,6 +73,7 @@ const selectors = {
   form: document.querySelector(".js-form"),
 };
 const {
+  lodashSearch,
   title,
   comment,
   list,
@@ -82,6 +84,15 @@ const {
   counter,
   form,
 } = selectors;
+//Handler LodashSearch
+lodashSearch.addEventListener('input', _.throttle(handlerLodashSearch, 3000, 
+  // {leading: false, trailing: false}
+))
+function handlerLodashSearch(evt) {
+console.log(evt.target.value);
+
+
+}
 
 //Handle input - Name, email, phone. Greeting
 form.addEventListener("submit", handlerSubmit);
@@ -161,11 +172,13 @@ function handlerCarsForm(evt) {
   } = evt.currentTarget.elements;
   const queryValue = query.toLowerCase();
 
-  const resultCars = cars.filter((item) => {
+  let resultCars = cars.filter((item) => {
     return item[selector].toLowerCase() == queryValue;
   });
 
   carsList.innerHTML = createMarkup(resultCars);
+  
+  evt.currentTarget.reset()
 }
 
 function createMarkup(dataArr) {
