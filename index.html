@@ -23,39 +23,45 @@
   </head>
   <body>
     <h2>LODASH Library</h2>
-    <input type="text" class="js-lodash">
+    <input type="text" class="js-lodash" />
     <h1 id="title" class="js-title"></h1>
     <p class="js-comment">"Введіть ім'я користувача"</p>
     <form action="submit" class="js-form user-form">
       <label class="label">
         Username
-        <input type="text" name="username" class="js-username username-input" placeholder="Tima Anubis" autofocus/>
+        <input
+          type="text"
+          name="username"
+          class="js-username username-input"
+          placeholder="Tima Anubis"
+          autofocus
+        />
       </label>
       <label class="label">
         Email
-        <input type="email" name="email" class="js-email email-input">
+        <input type="email" name="email" class="js-email email-input" />
       </label>
       <label class="label">
         Phone
-        <input type="tel" name="phone" class="js-phone phone-input">
-      </label>      
+        <input type="tel" name="phone" class="js-phone phone-input" />
+      </label>
       <label class="label">
         City
-        <input   type="text" name="city" class="js-city city-input">
+        <input type="text" name="city" class="js-city city-input" />
       </label>
       <label class="label">
         Street
-        <input  type="text" name="street" class="js-street street-input">
+        <input type="text" name="street" class="js-street street-input" />
       </label>
       <label class="label">
         Age
-        <input type="text"  name="age" class="js-age age-input">
+        <input type="text" name="age" class="js-age age-input" />
       </label>
       <label class="label">
         Car
-        <input type="text"  name="car" class="js-car car-input">
+        <input type="text" name="car" class="js-car car-input" />
       </label>
-     
+
       <button type="submit" class="js-form-btn user-form-btn">Save me</button>
     </form>
 
@@ -72,7 +78,7 @@
       <li class="item">4</li>
     </ul>
     <form type="submit" class="js-cars-form">
-      <input type="text" name="query">
+      <input type="text" name="query" />
       <select name="select">
         <option value="model">Марка</option>
         <option value="type" selected>Модель</option>
@@ -81,7 +87,9 @@
     </form>
     <ul class="js-cars-list" class="cars-list"></ul>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/lodash.throttle@4.1.1/index.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/lodash.debounce@4.0.8/index.min.js"></script> -->
 
-    <script src="/script.js"></script>
+    <script src="./js/script.js" type="module"></script>
   </body>
 </html>

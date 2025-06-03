@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1"
+  },
+  "name": "Luxe",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node script.js"
+  }
+}

@@ -1,3 +1,4 @@
+// import { cars } from "./cars";
 const cars = [
   {
     model: "BMW",
@@ -60,6 +61,45 @@ const cars = [
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
 ];
+// import { galleryItems } from "./gallery-items";
+// console.log(galleryItems[1]);
+const galleryItems = [
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg',
+    description: 'Hokkaido Flower',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg',
+    description: 'Container Haulage Freight',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg',
+    description: 'Aerial Beach View',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg',
+    description: 'Flower Blooms',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg',
+    description: 'Alpine Mountains',
+  }
+];
 const selectors = {
   lodashSearch:document.querySelector(".js-lodash"),
   title: document.querySelector(".js-title"),
@@ -85,13 +125,19 @@ const {
   form,
 } = selectors;
 //Handler LodashSearch
-lodashSearch.addEventListener('input', _.throttle(handlerLodashSearch, 3000, 
-  // {leading: false, trailing: false}
+// lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000, 
+//   {leading: false, trailing: false}
+// ))
+// function handlerThrottleSearch(evt) {
+// console.log(evt.target.value);
+// }
+
+
+lodashSearch.addEventListener('input', _.debounce(handlerDebounceSearch, 3000, 
+  {leading: true, trailing: true}
 ))
-function handlerLodashSearch(evt) {
+function handlerDebounceSearch(evt) {
 console.log(evt.target.value);
-
-
 }
 
 //Handle input - Name, email, phone. Greeting
@@ -182,7 +228,8 @@ function handlerCarsForm(evt) {
 }
 
 function createMarkup(dataArr) {
-  return (marKup = dataArr
+  let marKup = '';
+  return   marKup = dataArr
     .map(
       ({ model, type, price, img }) => `
     <li>
@@ -192,7 +239,7 @@ function createMarkup(dataArr) {
     <p>Price: ${price}</p>
   </li>`
     )
-    .join(""));
+    .join("");
 }
 
 carsList.classList.add("cars-list");
