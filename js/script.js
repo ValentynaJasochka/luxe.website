@@ -66,70 +66,70 @@ const cars = [
 const galleryItems = [
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg',
-    description: 'Hokkaido Flower',
+      "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg",
+    description: "Hokkaido Flower",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg',
-    description: 'Container Haulage Freight',
+      "https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg",
+    description: "Container Haulage Freight",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg',
-    description: 'Aerial Beach View',
+      "https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg",
+    description: "Aerial Beach View",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg',
+      "https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg',
-    description: 'Flower Blooms',
+      "https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg",
+    description: "Flower Blooms",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg',
+      "https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg',
-    description: 'Alpine Mountains',
+      "https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg",
+    description: "Alpine Mountains",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg',
-    description: 'Mountain Lake Sailing',
+      "https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg",
+    description: "Mountain Lake Sailing",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg',
-    description: 'Alpine Spring Meadows',
+      "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",
+    description: "Alpine Spring Meadows",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg',
-    description: 'Nature Landscape',
+      "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",
+    description: "Nature Landscape",
   },
   {
     preview:
-      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg',
+      "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg",
     original:
-      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
-    description: 'Lighthouse Coast Sea',
-  }
+      "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
+    description: "Lighthouse Coast Sea",
+  },
 ];
 const selectors = {
-  lodashSearch:document.querySelector(".js-lodash"),
+  lodashSearch: document.querySelector(".js-lodash"),
   title: document.querySelector(".js-title"),
   comment: document.querySelector(".js-comment"),
   list: document.querySelector(".js-list"),
@@ -139,7 +139,7 @@ const selectors = {
   subtractBtn: document.querySelector(".js-subtract-btn"),
   counter: document.querySelector(".js-counter"),
   form: document.querySelector(".js-form"),
-  imgLoader: document.querySelector('.js-img-loader')
+  imgLoader: document.querySelector(".js-img-loader"),
 };
 const {
   lodashSearch,
@@ -155,19 +155,19 @@ const {
   imgLoader,
 } = selectors;
 //Handler LodashSearch
-// lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000, 
+// lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000,
 //   {leading: false, trailing: false}
 // ))
 // function handlerThrottleSearch(evt) {
 // console.log(evt.target.value);
 // }
 
-
-lodashSearch.addEventListener('input', _.debounce(handlerDebounceSearch, 3000, 
-  {leading: true, trailing: true}
-))
+lodashSearch.addEventListener(
+  "input",
+  _.debounce(handlerDebounceSearch, 3000, { leading: true, trailing: true })
+);
 function handlerDebounceSearch(evt) {
-console.log(evt.target.value);
+  console.log(evt.target.value);
 }
 
 //Handle input - Name, email, phone. Greeting
@@ -233,10 +233,37 @@ goods.forEach((good) => {
 });
 const listHeader = `<h2>${"Список покупок"}</h2>`;
 list.insertAdjacentHTML("beforebegin", listHeader);
- 
 
 //List loading
-const marKup = galleryItems.map(({preview, description}) => ` <li> <img src="${preview}" alt="${description}" width='400'></li>`).join();
+const marKup = galleryItems
+  .map(
+    ({
+      preview,
+      description,
+    }) => ` <li class="photo" > <img src="${preview}" alt="${description}" loading='lazy' width='500'> <p class="photo-description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
+        possimus recusandae officiis deserunt voluptates odit suscipit.
+        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
+        necessitatibus ut eum officia numquam. Id.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
+        possimus recusandae officiis deserunt voluptates odit suscipit.
+        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
+        necessitatibus ut eum officia numquam. Id.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
+        possimus recusandae officiis deserunt voluptates odit suscipit.
+        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
+        necessitatibus ut eum officia numquam. Id.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
+        possimus recusandae officiis deserunt voluptates odit suscipit.
+        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
+        necessitatibus ut eum officia numquam. Id.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
+        possimus recusandae officiis deserunt voluptates odit suscipit.
+        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
+        necessitatibus ut eum officia numquam. Id.
+      </p>></li>`
+  )
+  .join();
 imgLoader.insertAdjacentHTML("beforeend", marKup);
 //CArs form and listStyle
 carsList.insertAdjacentHTML("beforeend", createMarkup(cars));
@@ -257,13 +284,13 @@ function handlerCarsForm(evt) {
   });
 
   carsList.innerHTML = createMarkup(resultCars);
-  
-  evt.currentTarget.reset()
+
+  evt.currentTarget.reset();
 }
 
 function createMarkup(dataArr) {
-  let marKup = '';
-  return   marKup = dataArr
+  let marKup = "";
+  return (marKup = dataArr
     .map(
       ({ model, type, price, img }) => `
     <li>
@@ -273,7 +300,7 @@ function createMarkup(dataArr) {
     <p>Price: ${price}</p>
   </li>`
     )
-    .join("");
+    .join(""));
 }
 
 carsList.classList.add("cars-list");

@@ -51,3 +51,6 @@ ul,li {
   flex-wrap: wrap;
   gap: 20px
 }
+.photo {
+  width: 500px;
+}
