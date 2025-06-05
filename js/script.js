@@ -98,6 +98,34 @@ const galleryItems = [
     original:
       'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg',
     description: 'Alpine Mountains',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg',
+    description: 'Mountain Lake Sailing',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg',
+    description: 'Alpine Spring Meadows',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg',
+    description: 'Nature Landscape',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
+    description: 'Lighthouse Coast Sea',
   }
 ];
 const selectors = {
@@ -111,6 +139,7 @@ const selectors = {
   subtractBtn: document.querySelector(".js-subtract-btn"),
   counter: document.querySelector(".js-counter"),
   form: document.querySelector(".js-form"),
+  imgLoader: document.querySelector('.js-img-loader')
 };
 const {
   lodashSearch,
@@ -123,6 +152,7 @@ const {
   subtractBtn,
   counter,
   form,
+  imgLoader,
 } = selectors;
 //Handler LodashSearch
 // lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000, 
@@ -203,7 +233,11 @@ goods.forEach((good) => {
 });
 const listHeader = `<h2>${"Список покупок"}</h2>`;
 list.insertAdjacentHTML("beforebegin", listHeader);
+ 
 
+//List loading
+const marKup = galleryItems.map(({preview, description}) => ` <li> <img src="${preview}" alt="${description}" width='400'></li>`).join();
+imgLoader.insertAdjacentHTML("beforeend", marKup);
 //CArs form and listStyle
 carsList.insertAdjacentHTML("beforeend", createMarkup(cars));
 

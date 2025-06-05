@@ -46,3 +46,8 @@ ul,li {
 .user-form-btn:focus {
   background-color:aquamarine;
 }
+.nature-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px
+}
