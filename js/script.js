@@ -140,6 +140,7 @@ const selectors = {
   counter: document.querySelector(".js-counter"),
   form: document.querySelector(".js-form"),
   imgLoader: document.querySelector(".js-img-loader"),
+  gameContainer: document.querySelector('.js-content')
 };
 const {
   lodashSearch,
@@ -153,6 +154,7 @@ const {
   counter,
   form,
   imgLoader,
+  gameContainer
 } = selectors;
 //Handler LodashSearch
 // lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000,
@@ -169,6 +171,13 @@ lodashSearch.addEventListener(
 function handlerDebounceSearch(evt) {
   console.log(evt.target.value);
 }
+// GAme
+let gameMarkup = ''
+for (let i = 0; i < 9; i+=1) {
+  gameMarkup +=`<div class="item"></div>`;
+  
+}
+gameContainer.insertAdjacentHTML('beforeend', gameMarkup)
 
 //Handle input - Name, email, phone. Greeting
 form.addEventListener("submit", handlerSubmit);
