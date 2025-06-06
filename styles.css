@@ -20,9 +20,13 @@ margin: 100px 50px 50px 50px;
   border: 1px solid black;
   cursor: pointer;
   vertical-align: middle;
-
-
 }
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: aquamarine;
+  text-align: center;
+  }
 .title-color {
   color: red;
 }

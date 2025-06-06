@@ -140,7 +140,7 @@ const selectors = {
   counter: document.querySelector(".js-counter"),
   form: document.querySelector(".js-form"),
   imgLoader: document.querySelector(".js-img-loader"),
-  gameContainer: document.querySelector('.js-content')
+  gameContainer: document.querySelector(".js-content"),
 };
 const {
   lodashSearch,
@@ -154,7 +154,7 @@ const {
   counter,
   form,
   imgLoader,
-  gameContainer
+  gameContainer,
 } = selectors;
 //Handler LodashSearch
 // lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000,
@@ -172,12 +172,62 @@ function handlerDebounceSearch(evt) {
   console.log(evt.target.value);
 }
 // GAme
-let gameMarkup = ''
-for (let i = 0; i < 9; i+=1) {
-  gameMarkup +=`<div class="item"></div>`;
-  
+function gameMarkup() {
+  let gameMarkup = "";
+  for (let i = 0; i < 9; i += 1) {
+    gameMarkup += `<div class="item" data-id="${i + 1}"></div>`;
+  }
+  gameContainer.innerHTML = gameMarkup;
 }
-gameContainer.insertAdjacentHTML('beforeend', gameMarkup)
+gameMarkup();
+let player = "X";
+const historyX = [];
+const historyO = [];
+const combinations = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7],
+];
+gameContainer.addEventListener("click", handlerClick);
+function handlerClick(evt) {
+  if (evt.target === evt.currentTarget || evt.target.textContent) {
+    return;
+  }
+  let isWinner = false;
+  let id = Number(evt.target.dataset.id);
+  if (player === "X") {
+    historyX.push(id);
+    isWinner = historyX.length >= 3 ? checkWinner(historyX) : false;
+  } else {
+    historyO.push(id);
+    isWinner = historyO.length >= 3 ? checkWinner(historyO) : false;
+  }
+
+  if (isWinner) {
+    const instance = basicLightbox.create(`
+     <div class ="box"> <h1>Player ${player} is winner</h1></div>
+    `);
+    instance.show();
+    resetGame();
+    return;
+  }
+  evt.target.textContent = player;
+  player = player === "X" ? "O" : "X";
+}
+function checkWinner(arr) {
+  return combinations.some((item) => item.every((id) => arr.includes(id)));
+}
+function resetGame() {
+  gameMarkup();
+  player = "X";
+  historyX.splice(0)
+  historyO.splice(0)
+}
 
 //Handle input - Name, email, phone. Greeting
 form.addEventListener("submit", handlerSubmit);
