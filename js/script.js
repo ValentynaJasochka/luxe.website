@@ -1,60 +1,70 @@
 // import { cars } from "./cars";
 const cars = [
   {
+    id: 1,
     model: "BMW",
     type: "5 series",
     price: 24300,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 2,
     model: "Honda",
     type: "Civic",
     price: 7800,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 3,
     model: "Audi",
     type: "Q7",
     price: 16000,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 4,
     model: "Honda",
     type: "Accord",
     price: 20000,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 5,
     model: "BMW",
     type: "5 series",
     price: 14500,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 6,
     model: "Honda",
     type: "Accord",
     price: 22500,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 7,
     model: "Honda",
     type: "C40",
     price: 19500,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 8,
     model: "Mini",
     type: "Cupper",
     price: 12000,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 9,
     model: "BMW",
     type: "Sport",
     price: 8000,
     img: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
   },
   {
+    id: 10,
     model: "Volvo",
     type: "Accord",
     price: 20000,
@@ -141,7 +151,7 @@ const selectors = {
   form: document.querySelector(".js-form"),
   imgLoader: document.querySelector(".js-img-loader"),
   gameContainer: document.querySelector(".js-content"),
-  colorBox: document.querySelector(".js-color-box")
+  colorBox: document.querySelector(".js-color-box"),
 };
 const {
   lodashSearch,
@@ -156,7 +166,7 @@ const {
   form,
   imgLoader,
   gameContainer,
-  colorBox
+  colorBox,
 } = selectors;
 //Handler LodashSearch
 // lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000,
@@ -227,16 +237,19 @@ function checkWinner(arr) {
 function resetGame() {
   gameMarkup();
   player = "X";
-  historyX.splice(0)
-  historyO.splice(0)
+  historyX.splice(0);
+  historyO.splice(0);
 }
 
 //Color box, event bubbling;
-colorBox.addEventListener('click', handlerColorBox);
+colorBox.addEventListener("click", handlerColorBox);
 function handlerColorBox(evt) {
-const box= evt.target.dataset
+  if (!evt.target.classList.contains("js-color-item")) {
+    return;
+  }
+  const box = evt.target.dataset;
 
-colorBox.insertAdjacentHTML('afterbegin', `<h3> ${box.color}</h3>`)
+  colorBox.insertAdjacentHTML("afterbegin", `<h3> ${box.color}</h3>`);
 }
 
 //Handle input - Name, email, phone. Greeting
@@ -298,7 +311,7 @@ const goods = [...list.children];
 
 goods.forEach((good) => {
   good.textContent = `tomato`;
-  good.classList.add("item");
+  good.classList.add("element");
 });
 const listHeader = `<h2>${"Список покупок"}</h2>`;
 list.insertAdjacentHTML("beforebegin", listHeader);
@@ -334,6 +347,7 @@ const marKup = galleryItems
   )
   .join();
 imgLoader.insertAdjacentHTML("beforeend", marKup);
+
 //CArs form and listStyle
 carsList.insertAdjacentHTML("beforeend", createMarkup(cars));
 
@@ -361,18 +375,54 @@ function createMarkup(dataArr) {
   let marKup = "";
   return (marKup = dataArr
     .map(
-      ({ model, type, price, img }) => `
-    <li>
+      ({ id, model, type, price, img }) => `
+    <li data-id="${id}" class="car-item">
     <img src="${img}" alt="${model}" width ='300'>
     <h2>Make: ${model}</h2>
     <h3>Model: ${type}</h3>
     <p>Price: ${price}</p>
+    <button type='button' class="js-add">Add</button>
   </li>`
     )
     .join(""));
 }
 
 carsList.classList.add("cars-list");
+carsList.addEventListener("click", handlerClickCar);
+function handlerClickCar(evt) {
+  const cardItem = evt.target.closest(".car-item");
+  if (evt.target.classList.contains("js-add")) {
+    const car = findCardItem(cardItem);
+    const instance = basicLightbox.create(createAddCarMurkup(car));
+     instance.show();
+    
+  } else if (cardItem) {
+    const car = findCardItem(cardItem);
+    const instance = basicLightbox.create(createDetailInfoMurkup(car));
+     instance.show();
+    // console.log(car);
+  }
+}
+function findCardItem(item) {
+  const { id } = item.dataset;
+  const currentCar = cars.find(({ id: carId }) => carId === Number(id));
+  return currentCar;
+}
+function createDetailInfoMurkup({id, img, model, price}={}) {
+return `<div data-id="${id}" class="modal">
+<img src="${img}" alt="${model}" width ='600'>
+<h2>Make: ${model}</h2>
+<p>Price: ${price}</p>
+<button type='button'>Add</button>
+</div>`
+}
+function createAddCarMurkup({model, price}={}) {
+  return `<div class="card-model"> 
+  <h2>Add to card car</h2>
+  <p>Model: ${model}</p> 
+  <p>Price: ${price}</p> 
+  </div>`
+  }
 
 // Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);

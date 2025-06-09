@@ -30,7 +30,7 @@ margin: 100px 50px 50px 50px;
 .title-color {
   color: red;
 }
-.item {
+.element {
   color: blue;
 }
 .math-container {
@@ -102,4 +102,14 @@ margin: 100px 50px 50px 50px;
   height: 80px;
   background-color: blue;
   cursor: pointer;
+}
+.modal{
+  background-color: aliceblue;
+  border: 2px solid black;
+  padding: 20px;
+}
+.card-model {
+  background-color: aliceblue;
+  border: 2px solid black;
+  padding: 20px;
 }
