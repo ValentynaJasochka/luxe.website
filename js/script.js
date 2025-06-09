@@ -141,6 +141,7 @@ const selectors = {
   form: document.querySelector(".js-form"),
   imgLoader: document.querySelector(".js-img-loader"),
   gameContainer: document.querySelector(".js-content"),
+  colorBox: document.querySelector(".js-color-box")
 };
 const {
   lodashSearch,
@@ -155,6 +156,7 @@ const {
   form,
   imgLoader,
   gameContainer,
+  colorBox
 } = selectors;
 //Handler LodashSearch
 // lodashSearch.addEventListener('input', _.throttle(handlerThrottleSearch, 3000,
@@ -227,6 +229,14 @@ function resetGame() {
   player = "X";
   historyX.splice(0)
   historyO.splice(0)
+}
+
+//Color box, event bubbling;
+colorBox.addEventListener('click', handlerColorBox);
+function handlerColorBox(evt) {
+const box= evt.target.dataset
+
+colorBox.insertAdjacentHTML('afterbegin', `<h3> ${box.color}</h3>`)
 }
 
 //Handle input - Name, email, phone. Greeting

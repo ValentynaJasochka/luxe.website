@@ -6,7 +6,7 @@ display: flex;
 margin: 100px 50px 50px 50px;
 }
 .content {
-  width: 152px;
+  width: 153px;
   border: 1px solid black;
   margin: 0 auto;
 }
@@ -78,4 +78,28 @@ margin: 100px 50px 50px 50px;
 }
 .photo {
   width: 500px;
+}
+.color-box {
+  display: flex;
+  flex-direction: row ;
+  gap: 30px;
+  padding: 30px;
+}
+.item-green {
+  width: 80px;
+  height: 80px;
+  background-color: green;
+  cursor: pointer;
+}
+.item-red{
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  cursor: pointer;
+}
+.item-blue {
+  width: 80px;
+  height: 80px;
+  background-color: blue;
+  cursor: pointer;
 }
