@@ -1,3 +1,5 @@
+
+
 ul,li {
   list-style: none;
 }
@@ -9,6 +11,39 @@ margin: 100px 50px 50px 50px;
   width: 153px;
   border: 1px solid black;
   margin: 0 auto;
+}
+.main-container {
+position: relative;
+width: 250px;
+height: 320px;
+background: green;
+}
+.thecard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  background:  yellow;
+}
+.thecard:hover {
+  transform: rotateY(180deg);
+}
+.thefront {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: #fcf728;
+  color: #333;
+}
+.theback {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: green;
+  transform: rotateY(180deg);
 }
 .item{
   width: 50px;
