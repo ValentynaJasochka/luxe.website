@@ -319,31 +319,23 @@ list.insertAdjacentHTML("beforebegin", listHeader);
 //List loading
 const marKup = galleryItems
   .map(
-    ({
-      preview,
-      description,
-    }) => ` <li class="photo" > <img src="${preview}" alt="${description}" loading='lazy' width='500'> <p class="photo-description">
+    ({ preview, description }) => `
+      <li class="main-container photo">
+        <div class="thecard">
+          <div class="thefront ">
+            <img src="${preview}" alt="${description}" class="img-box"loading="lazy" />
+          </div>
+          <div class="theback inform-box">
+            <p class="photo-description">${description}</p>
+            <p class="photo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
+        possimus recusandae officiis deserunt voluptates odit suscipit.
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
         possimus recusandae officiis deserunt voluptates odit suscipit.
-        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
-        necessitatibus ut eum officia numquam. Id.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
-        possimus recusandae officiis deserunt voluptates odit suscipit.
-        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
-        necessitatibus ut eum officia numquam. Id.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
-        possimus recusandae officiis deserunt voluptates odit suscipit.
-        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
-        necessitatibus ut eum officia numquam. Id.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
-        possimus recusandae officiis deserunt voluptates odit suscipit.
-        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
-        necessitatibus ut eum officia numquam. Id.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit soluta
-        possimus recusandae officiis deserunt voluptates odit suscipit.
-        Reprehenderit debitis voluptatum repudiandae laboriosam porro nihil
-        necessitatibus ut eum officia numquam. Id.
-      </p>></li>`
+        </p>
+            <button type="button">View more</button>
+          </div>
+        </div>
+      </li>`
   )
   .join();
 imgLoader.insertAdjacentHTML("beforeend", marKup);
@@ -394,12 +386,11 @@ function handlerClickCar(evt) {
   if (evt.target.classList.contains("js-add")) {
     const car = findCardItem(cardItem);
     const instance = basicLightbox.create(createAddCarMurkup(car));
-     instance.show();
-    
+    instance.show();
   } else if (cardItem) {
     const car = findCardItem(cardItem);
     const instance = basicLightbox.create(createDetailInfoMurkup(car));
-     instance.show();
+    instance.show();
     // console.log(car);
   }
 }
@@ -408,21 +399,21 @@ function findCardItem(item) {
   const currentCar = cars.find(({ id: carId }) => carId === Number(id));
   return currentCar;
 }
-function createDetailInfoMurkup({id, img, model, price}={}) {
-return `<div data-id="${id}" class="modal">
+function createDetailInfoMurkup({ id, img, model, price } = {}) {
+  return `<div data-id="${id}" class="modal">
 <img src="${img}" alt="${model}" width ='600'>
 <h2>Make: ${model}</h2>
 <p>Price: ${price}</p>
 <button type='button'>Add</button>
-</div>`
+</div>`;
 }
-function createAddCarMurkup({model, price}={}) {
+function createAddCarMurkup({ model, price } = {}) {
   return `<div class="card-model"> 
   <h2>Add to card car</h2>
   <p>Model: ${model}</p> 
   <p>Price: ${price}</p> 
-  </div>`
-  }
+  </div>`;
+}
 
 // Add - Subtract -  Buttons
 addBtn.addEventListener("click", handlerAdd);
